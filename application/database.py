@@ -2,10 +2,10 @@ import mysql.connector
 
 # เชื่อมต่อกับ database ที่สร้างไว้
 db = mysql.connector.connect(
-    host="localhost", # sql12.freesqldatabase.com
-    database="patient_info", # sql12718944
-    user="root", # sql12718944
-    password="1234", # 1DYCQpAPGS
+    host="sql12.freesqldatabase.com", # sql12.freesqldatabase.com
+    database="sql12718944", # sql12718944
+    user="sql12718944", # sql12718944
+    password="1DYCQpAPGS", # 1DYCQpAPGS
     port="3306"
 )
 # ตรวจสอบว่าเชื่อมต่อแล้วรึยัง

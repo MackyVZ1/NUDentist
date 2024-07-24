@@ -579,7 +579,7 @@ class temp_info:
         doc.save(f"documents/{docfile}")
     
         # สั่งพิมพ์ใบคัดกรอง
-        # print_file(f"documents/{docfile}")
+        print_file(f"documents/{docfile}")
         
 # tempInfo = temp_info()
 # tempInfo.makeDocument(None, None, None, None, None, None, None, None, None, None, None, None
