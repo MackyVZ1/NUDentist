@@ -1,5 +1,6 @@
 import tkinter as tk
 import mysql.connector
+import temporaryInfo
 
 from CheckInfo import checkInfo
 from tkinter import ttk
@@ -24,14 +25,28 @@ def StaffMenu():
         newData = [] # แปลง tuple เป็น list
         for data in result: # เอาข้อมูลใน tuple มาเก็บใน list เพื่อให้สามารถนำข้อมูลแต่ละ index ไปเก็บใน sql ได้
             newData.append(data)
-        #print(newData) เอาไว้เช็คค่า 
+        print(newData) # เอาไว้เช็คค่า 
         # กรณีเป็นผู่ป่วยใหม่ยังไม่มี DN
         if newData[1] == None:
+            # สั่งปริ้นใบคัดกรอง
+            c.makeDocument(newData[2], newData[3], newData[4], newData[8], newData[20], newData[21], newData[22],
+                           newData[23], newData[24], newData[25], newData[26], newData[27], newData[28], newData[29],
+                           newData[30], newData[31], newData[32], newData[33], newData[34], newData[35], newData[36],
+                           newData[37], newData[38], newData[39], newData[40], newData[41], newData[42], newData[43],
+                           newData[44], newData[45], newData[46], newData[47], newData[48], newData[49], newData[50],
+                           newData[51], newData[52], newData[53], newData[54], newData[55])
             checkInfo(newData)
             myCursor.execute("DELETE FROM QueueInfo WHERE ID = %s", idList)
             db.commit
         # กรณีเป็นผู้ป่วยเก่ามี DN แล้ว
         else:
+            # สั่งปริ้นใบคัดกรอง
+            c.makeDocument(newData[2], newData[3], newData[4], newData[8], newData[20], newData[21], newData[22],
+                           newData[23], newData[24], newData[25], newData[26], newData[27], newData[28], newData[29],
+                           newData[30], newData[31], newData[32], newData[33], newData[34], newData[35], newData[36],
+                           newData[37], newData[38], newData[39], newData[40], newData[41], newData[42], newData[43],
+                           newData[44], newData[45], newData[46], newData[47], newData[48], newData[49], newData[50],
+                           newData[51], newData[52], newData[53], newData[54], newData[55])
             # ลบข้อมูลชั่วคราวที่เก็บทิ้ง
             myCursor.execute("DELETE FROM QueueInfo WHERE ID = %s", idList)
             db.commit()
@@ -116,6 +131,9 @@ def StaffMenu():
     image2 = Image.open("components/refresh.png")
     checkinfoImage = ImageTk.PhotoImage(image1)
     refreshImage = ImageTk.PhotoImage(image2)
+    
+    # ตัวแปรเอาไว้ปริ้นใบคัดกรอง
+    c = temporaryInfo.temp_info()
     
     # Label & Button
     staffLabel = tk.Label(appWindow, text="คิวรอพิมพ์ทำข้อมูล",font=("FreesiaUPC", 62, "bold"), bg="white")

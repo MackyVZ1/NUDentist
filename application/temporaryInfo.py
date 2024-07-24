@@ -32,7 +32,7 @@ class temp_info:
         self.emergencyNum = emergencyNum
         self.emergencyAddress = emergencyAddress
     # ฟังก์ชันทำใบคัดกรอง และทำ.docx
-    def makeDocument(self, thaiTitle, thaiName, thaiSurname, ID, address,
+    def makeDocument(self, thaiTitle, thaiName, thaiSurname, ID,
                     tempVar, bloodtopVar, bloodbottomVar, hearrateVar, 
                     checkbox1Var, checkbox2Var, checkbox3Var, checkbox4Var,
                     checkbox5Var, checkbox6Var, checkbox7Var, checkbox8Var,
@@ -46,7 +46,6 @@ class temp_info:
         self.thaiName = thaiName
         self.thaiSurname = thaiSurname
         self.ID = ID
-        self.address = address
         self.temp_var = tempVar
         self.bloodtop_var = bloodtopVar
         self.bloodbottom_var = bloodbottomVar
@@ -169,7 +168,7 @@ class temp_info:
         tempPara = tempDoc.paragraphs[0]
         tempPara.clear()
         
-        newtempDoc = tempPara.add_run(f"{self.hearrate_var}")
+        newtempDoc = tempPara.add_run(f"{self.temp_var}")
         fontforTemp = newtempDoc.font
         fontforTemp.name = "FreesiaUPC"
         fontforTemp.size = Pt(14)
