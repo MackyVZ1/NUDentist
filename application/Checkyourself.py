@@ -3,8 +3,6 @@ import datetime
 
 from PIL import Image, ImageTk
 from database import myCursor, db
-from Printer import print_file
-from temporaryInfo import temp_info
 from tkinter import ttk
 
 ## ฟังก์ชันเข้าหน้าทำใบคัดกรอง
@@ -34,51 +32,6 @@ def makeCheckingYourself(
         # ฟังก์ชันกดปุ่ม "ตกลง"
         def submit():
             warning_screen.destroy()
-            tempInfo = temp_info()
-            #ส่งข้อมูลไปหน้ารอคิว
-            # filename = tempInfo.makeDocument(
-            #         thai_title,
-            #         thai_name,
-            #         thai_surname,
-            #         ID,
-            #         address,
-            #         tempVar.get(),
-            #         bloodtopVar.get(),
-            #         bloodbottomVar.get(),
-            #         hearrateVar.get(),
-            #         checkbox1Var.get(),
-            #         checkbox2Var.get(),
-            #         checkbox3Var.get(),
-            #         checkbox4Var.get(),
-            #         checkbox5Var.get(),
-            #         checkbox6Var.get(),
-            #         checkbox7Var.get(),
-            #         checkbox8Var.get(),
-            #         checkbox9Var.get(),
-            #         checkbox10Var.get(),
-            #         checkbox11Var.get(),
-            #         checkbox12Var.get(),
-            #         checkbox13Var.get(),
-            #         checkbox14Var.get(),
-            #         checkbox15Var.get(),
-            #         checkbox15inputVar.get(),
-            #         checkbox16Var.get(),
-            #         checkbox17Var.get(),
-            #         checkbox18Var.get(),
-            #         checkbox19Var.get(),
-            #         checkbox20Var.get(),
-            #         checkbox21Var.get(),
-            #         checkbox22Var.get(),
-            #         checkbox23Var.get(),
-            #         checkbox24Var.get(),
-            #         checkbox25Var.get(),
-            #         checkbox26Var.get(),
-            #         checkbox27Var.get(),
-            #         checkbox28Var.get(),
-            #         checkbox29Var.get(),
-            #         checkbox30Var.get(),
-            #         checkbox30inputVar.get())
-            #print_file(filename)
             ### ส่งข้อมูลไป database ตารางชื่อ QueueInfo /ดึงข้อมูลจาก database ###
             tempdata = "INSERT INTO QueueInfo(Time, DN, thaiTitle, thaiName, thaiSurname, engTitle, engName, engSurname, ID, birthdate, age, gender, status, job, address, phoneNum, emergencyName, relation, emergencyNum, emergencyAddress, tempVar, bloodtopVar, bloodbottomVar, hearrateVar, checkbox1Var, checkbox2Var, checkbox3Var, checkbox4Var, checkbox5Var, checkbox6Var, checkbox7Var, checkbox8Var, checkbox9Var, checkbox10Var , checkbox11Var, checkbox12Var, checkbox13Var, checkbox14Var, checkbox15Var, checkbox15inputVar, checkbox16Var, checkbox17Var, checkbox18Var, checkbox19Var, checkbox20Var, checkbox21Var, checkbox22Var, checkbox23Var, checkbox24Var, checkbox25Var, checkbox26Var, checkbox27Var, checkbox28Var, checkbox29Var, checkbox30Var, checkbox30inputVar) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
             values = (timer, DN, thai_title, thai_name, thai_surname, engTitle, engName, engSurname, ID, birthdate, age, gender, status, job, address, phoneNum, emergencyName, relation, emergencyNum, emergencyAddress, tempVar.get(), bloodtopVar.get(), bloodbottomVar.get(), hearrateVar.get(), checkbox1Var.get(), checkbox2Var.get(), checkbox3Var.get(), checkbox4Var.get(), checkbox5Var.get(), checkbox6Var.get(), checkbox7Var.get(), checkbox8Var.get(), checkbox9Var.get(), checkbox10Var.get(), checkbox11Var.get(), checkbox12Var.get(), checkbox13Var.get(), checkbox14Var.get(), checkbox15Var.get(), checkbox15inputVar.get(), checkbox16Var.get(), checkbox17Var.get(), checkbox18Var.get(), checkbox19Var.get(), checkbox20Var.get(), checkbox21Var.get(), checkbox22Var.get(), checkbox23Var.get(), checkbox24Var.get(), checkbox25Var.get(), checkbox26Var.get(), checkbox27Var.get(), checkbox28Var.get(), checkbox29Var.get(), checkbox30Var.get(), checkbox30inputVar.get())
