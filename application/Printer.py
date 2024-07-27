@@ -1,28 +1,29 @@
-import win32print
 import win32api
 import os
 import time
 
 def print_file(file_path):
-    # ดึงข้อมูลเครื่องปริ้นที่ใช้เป็นเครื่องตั้งต้น
-    printer_name = win32print.GetDefaultPrinter()
+    try:
+        current_directory = os.getcwd() # ใช้สำหรับอ้างอิงที่อยู่ปัจจุบันของไฟล์ python
+        file_path = os.path.join(current_directory, file_path) # ดัึงที่อยู่ไฟล์ที่จะปริ้น
+        
+        win32api.ShellExecute(
+            0,
+            "print",
+            file_path,
+            None,
+            ".",
+            0
+        )
+        
+        time.sleep(10)  # รอให้การพิมพ์เสร็จสิ้น (ปรับเวลาตามที่เหมาะสม)
+        
+        # ถ้าต้องการลบไฟล์หลังจากพิมพ์เสร็จ ให้เอา # ออกจากบรรทัดด้านล่าง
+        # os.remove(file_path)
     
-    # สั่งพิมพ์
-    win32api.ShellExecute(
-        0,
-        "print",
-        file_path,
-        f'/d:"{printer_name}"',
-        ".",
-        0
-    )
-    
-    # รอให้การพิมพ์เสร็จสิ้น (อาจต้องปรับเวลาตามความเหมาะสม)
-    time.sleep(10)
-    
-    # ถ้าต้องการลบไฟล์หลังจากพิมพ์เสร็จ ให้เอา # ออกจากบรรทัดด้านล่าง
-    os.remove(file_path)
+    except Exception as e:
+        print(f"Error printing file: {e}")
 
 # ตัวอย่างการใช้งาน
 # ปรินเไฟล์ .docx
-#print_pdf("1110301373253_วีรภัทร_ข้อมูลส่วนตัว.docx")
+# print_file("documents/1110301373253_วีรภัทร.docx")
